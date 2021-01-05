@@ -1,5 +1,6 @@
 import math
 from typing import List
+
 import numpy as np
 
 from application.models.models import Entity
@@ -28,7 +29,7 @@ def splice(one: List[int], two: List[int]) -> List[int]:
 def return_sorted_culled_population(population: List[Entity], proportion: float) -> List[Entity]:
     sorted_population = sorted(population, key=lambda x: x.score, reverse=True)
     total_length = len(population)
-    members_to_keep = math.floor(total_length*(1-proportion))
+    members_to_keep = math.floor(total_length * (1 - proportion))
     return sorted_population[:members_to_keep]
 
 
@@ -38,7 +39,7 @@ def return_population_with_normalised_scores(population: List[Entity]) -> List[E
     for member in population:
         total_score += member.score
     for member in population:
-        normalised_score = member.score/total_score
+        normalised_score = member.score / total_score
         new_member = Entity(member.search_radius, member.genes, normalised_score)
         normalised_population.append(new_member)
     return normalised_population

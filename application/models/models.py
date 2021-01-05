@@ -1,4 +1,4 @@
-from typing import Dict, Iterable, List
+from typing import Dict, List
 
 
 class Entity:
@@ -10,4 +10,3 @@ class Entity:
         self.search_radius = radius
         self.genes = genes
         self.score = score
-
