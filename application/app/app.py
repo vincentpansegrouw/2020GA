@@ -1,5 +1,5 @@
 import math
-from typing import Tuple, List
+from typing import List
 import numpy as np
 
 from application.models.models import Entity
@@ -65,3 +65,21 @@ def return_filled_generation(population: List[Entity], population_size: int) -> 
         new_members = mate(parent_1, parent_2)
         new_population += new_members
     return new_population
+
+
+def new_mutation(entity: Entity, mutation_constant: float) -> Entity:
+    new_genes = {}
+    genes = entity.genes
+    for k, v in genes.items():
+        new_gene = []
+        for item in v:
+            if np.random.random_sample() < mutation_constant:
+                new_gene.append(np.random.randint(0, 9))
+            else:
+                new_gene.append(item)
+        new_genes += {k, new_gene}
+    return Entity(entity.search_radius, new_genes, 0)
+
+
+def compute_generation(population: List[Entity], mutation_constant: float) -> List[Entity]:
+    pass
