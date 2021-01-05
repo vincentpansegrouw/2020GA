@@ -10,3 +10,4 @@ class Entity:
         self.search_radius = radius
         self.genes = genes
         self.score = score
+
